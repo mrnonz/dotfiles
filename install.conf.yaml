@@ -5,6 +5,7 @@
 - clean: ['~']
 
 - link:
+    ~/.Brewfile: Brewfile
     ~/.bashrc: bashrc
     ~/.zshrc: zshrc
 
