@@ -118,6 +118,19 @@ function kubectl() { echo "+ kubectl $@">&2; command kubectl $@; }
 autoload bashcompinit && bashcompinit
 alias awsp="source _awsp"
 
+# Confluent
+export CONFLUENT_HOME="/Users/nontawat/confluent"
+export PATH="$CONFLUENT_HOME/bin:$PATH"
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/nontawat/sunday/motor/motor-sync-gateway/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/nontawat/sunday/motor/motor-sync-gateway/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/nontawat/sunday/motor/motor-sync-gateway/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/nontawat/sunday/motor/motor-sync-gateway/node_modules/tabtab/.completions/sls.zsh
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /Users/nontawat/sunday/motor/motor-sync-gateway/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/nontawat/sunday/motor/motor-sync-gateway/node_modules/tabtab/.completions/slss.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 
@@ -132,3 +145,23 @@ eval "$(jump shell)"
 
 # GDATE
 alias date='gdate'
+export HOMEBREW_GITHUB_API_TOKEN=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
+
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/vault vault
+export VAULT_ADDR=https://vault.easysunday.com/
+export PATH="/usr/local/opt/whois/bin:$PATH"
+
+
+
+  # Zsh looks for completion functions in the directories listed in the fpath shell variable.
+  # Put the confluent completion code for zsh into a file in one the fpath directories,
+  # preferably one of the functions directories. eg:
+confluent completion zsh > ${fpath[1]}/_confluent
+
+  # Enable zsh completions
+autoload -U compinit && compinit
+
